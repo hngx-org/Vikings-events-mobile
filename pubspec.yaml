@@ -31,9 +31,22 @@ dependencies:
 
    # Provider state management library extension with classes to boost mvvm architecture
   stacked: ^3.4.1+1
+
+  #App splashscreen
+  flutter_native_splash: ^2.3.2
   
   stacked_hooks: ^0.2.3
   stacked_services: ^1.3.0
+
+
+flutter_native_splash:
+  android: true
+  ios: true
+  color: '#28289F'
+  image: 'assets/images/splashscreen.png'
+  android_12:
+    image: 'assets/images/splashscreen.png'
+
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -50,7 +63,7 @@ flutter:
   assets:
     
     - assets/svgs/
-    - assets/pngs/
+    - assets/images/
     - assets/fonts/
    
 
