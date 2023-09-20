@@ -33,7 +33,7 @@ class EventApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Vikings Event App',
-       themeMode: ThemeMode.light,
+      themeMode: ThemeMode.light,
       theme: EnvThemeManager.lightTheme,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: StackedRouter().onGenerateRoute,
