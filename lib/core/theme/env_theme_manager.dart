@@ -1,4 +1,3 @@
-
 import 'package:event_app/core/constants/env_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +19,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class EnvThemeManager {
   EnvThemeManager._();
 
-  static String get _fontFamily => 'Outfit';
+  static String get _fontFamily => 'Poppins';
   static ThemeData lightTheme = _themeData(_lightColorScheme);
 
   static final ColorScheme _lightColorScheme = const ColorScheme.light()
@@ -38,6 +37,7 @@ class EnvThemeManager {
 
   static ThemeData _themeData(ColorScheme colorScheme) => ThemeData(
       scaffoldBackgroundColor: colorScheme.background,
+      useMaterial3: false,
       colorScheme: colorScheme,
       textTheme: _textTheme(colorScheme),
       iconTheme: _iconTheme(colorScheme),
@@ -83,7 +83,6 @@ class EnvThemeManager {
         bodyLarge: TextStyle(
           fontSize: 24.sp,
           color: colorScheme.surface,
-          
           fontWeight: FontWeight.w500,
         ),
         bodyMedium: TextStyle(
@@ -100,6 +99,7 @@ class EnvThemeManager {
 
   static AppBarTheme _appBarTheme(ColorScheme colorScheme) => AppBarTheme(
         backgroundColor: colorScheme.background,
+        elevation: 0,
         iconTheme: _iconTheme(colorScheme),
         actionsIconTheme: _iconTheme(colorScheme),
       );
