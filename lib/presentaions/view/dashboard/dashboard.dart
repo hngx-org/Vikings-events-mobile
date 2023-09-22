@@ -16,7 +16,11 @@ class Dashboard extends ConsumerWidget {
         title: const Text('Title'),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        showUnselectedLabels: true,
         currentIndex: dashboardVM.page,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        selectedFontSize: 14,
         onTap: (value) =>
             ref.read(dashBoardControllerProvider.notifier).switchPage(value),
         items: [
@@ -39,7 +43,7 @@ class Dashboard extends ConsumerWidget {
         ],
       ),
       body: [
-        //TODO: Add the pages here
+        //!TODO: Add the pages here
         const SizedBox.expand(
           child: Text('Home'),
         ),
