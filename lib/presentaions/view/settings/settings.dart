@@ -1,5 +1,4 @@
 import 'package:event_app/presentaions/shared/dubm_widgets/env_icon_button.dart';
-import 'package:event_app/presentaions/shared/smart_widgets/env_appbar.dart';
 import 'package:event_app/presentaions/view/authentication/log_in.dart';
 import 'package:event_app/presentaions/view/settings/settings_viewmodel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
