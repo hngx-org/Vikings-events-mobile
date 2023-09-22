@@ -1,5 +1,6 @@
 import 'package:event_app/core/constants/env_colors.dart';
 import 'package:event_app/core/constants/env_dimensions.dart';
+import 'package:event_app/core/extensions/padding_extension.dart';
 import 'package:event_app/presentaions/controllers/my_group_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,65 +24,65 @@ class GroupView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(
-          color: EnvColors.secondaryTextColor.withOpacity(0.3),
-          strokeAlign: BorderSide.strokeAlignCenter,
-          width: 1.sp,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8.r),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(
+            color: Colors.grey.shade300,
+            strokeAlign: BorderSide.strokeAlignCenter,
+            width: 1.sp,
+          ),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            flex: 5,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Image.asset(
-                  imageStr,
-                  fit: BoxFit.cover,
-                ),
-                //implement logic for image from api
-                hasEvent
-                    ? Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Badge(
-                          backgroundColor: Colors.transparent,
-                          largeSize: EnvDimension.big.h,
-                          label: Container(
-                            height: 20.sp,
-                            width: 60.sp,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2.sp),
-                              color: EnvColors.secondaryColor.shade300,
-                            ),
-                            child: Center(
-                              child: Text(
-                                '$eventsNo Events',
-                                style: TextStyle(
-                                  fontSize: 9.sp,
-                                  wordSpacing: 0.5.sp,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Poppins',
-                                  color: Colors.black,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: 5,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.asset(
+                    imageStr,
+                    fit: BoxFit.cover,
+                  ),
+                  //implement logic for image from api
+                  hasEvent
+                      ? Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: Badge(
+                            backgroundColor: Colors.transparent,
+                            largeSize: EnvDimension.big.h,
+                            label: Container(
+                              height: 20.sp,
+                              width: 60.sp,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2.sp),
+                                color: EnvColors.secondaryColor.shade300,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  '$eventsNo Events',
+                                  style: TextStyle(
+                                    fontSize: 9.sp,
+                                    wordSpacing: 0.5.sp,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'Poppins',
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      )
-                    : const SizedBox(),
-              ],
+                        )
+                      : const SizedBox(),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: EdgeInsets.only(left: 4.w),
+            Expanded(
+              flex: 2,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,14 +102,16 @@ class GroupView extends StatelessWidget {
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Poppins',
-                      color: Colors.black.withOpacity(0.5),
+                      color: EnvColors.primaryColor.shade300,
                     ),
                   ),
                 ],
+              ).paddingSymmetric(
+                horizontal: 5.w,
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -164,17 +167,30 @@ class _CreateTitleState extends State<CreateTitle> {
       controller: myGoons,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
-        filled: true,
-        fillColor: EnvColors.secondaryTextColor.withOpacity(0.1.sp),
-        hintText: 'My goons',
-        border: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 4.w,
-            color: EnvColors.secondaryTextColor.withOpacity(0.1.sp),
+          filled: true,
+          fillColor: EnvColors.secondaryTextColor.withOpacity(0.01.sp),
+          hintText: 'My goons',
+          border: OutlineInputBorder(
+            borderSide: BorderSide(
+              width: 1.w,
+              color: Colors.grey.shade300,
+            ),
+            borderRadius: BorderRadius.circular(10.sp),
           ),
-          borderRadius: BorderRadius.circular(10.sp),
-        ),
-      ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              width: 1.w,
+              color: EnvColors.primaryColor,
+            ),
+            borderRadius: BorderRadius.circular(10.sp),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              width: 1.w,
+              color: Colors.grey.shade300,
+            ),
+            borderRadius: BorderRadius.circular(10.sp),
+          )),
     );
   }
 }

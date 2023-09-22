@@ -2,8 +2,8 @@ import 'package:event_app/core/constants/env_dimensions.dart';
 import 'package:event_app/core/extensions/num_extension.dart';
 import 'package:event_app/core/extensions/padding_extension.dart';
 import 'package:event_app/core/extensions/string_extension.dart';
-import 'package:event_app/presentaions/view/home/home_gridview.dart';
-import 'package:event_app/presentaions/view/home/home_tab.dart';
+import 'package:event_app/presentaions/view/home/widgets/home_gridview.dart';
+import 'package:event_app/presentaions/view/home/widgets/home_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
             ),
             10.hi,
             const HappingNowCard(),
-            20.hi,
+            28.hi,
             Text(
               'Upcoming events',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -120,9 +120,10 @@ class HappingNowCard extends StatelessWidget {
                 Text(
                   'Sunday 4 - 6 PM',
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: EnvColors.primaryColor.shade300),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: EnvColors.primaryColor.shade300,
+                      ),
                 ),
                 Row(
                   children: [
@@ -153,44 +154,4 @@ class HappingNowCard extends StatelessWidget {
       ),
     );
   }
-}
-
-PreferredSize leadingAppBar(
-  BuildContext context, {
-  bool hasBackButton = false,
-}) {
-  return PreferredSize(
-    preferredSize: const Size.fromHeight(60),
-    child: SafeArea(
-      child: SizedBox(
-        height: 60,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                const CircleAvatar(
-                  radius: 20,
-                  backgroundImage: AssetImage(
-                    'assets/images/profile1.png',
-                  ),
-                ),
-                10.wi,
-                Text(
-                  'Hello, Tam!',
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: EnvColors.primaryColor,
-                      ),
-                ),
-              ],
-            ),
-            SvgPicture.asset('notification'.svg),
-          ],
-        ),
-      ).paddingSymmetric(
-        horizontal: 16,
-      ),
-    ),
-  );
 }
