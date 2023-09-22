@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\Users\admin\AppData\Local\flutter"
-export "FLUTTER_APPLICATION_PATH=C:\Users\admin\OneDrive\Desktop\Vikings-events-mobile"
+export "FLUTTER_ROOT=C:\apps\flutter_windows_3.10.3-stable\flutter"
+export "FLUTTER_APPLICATION_PATH=C:\codes\hngx\Vikings-events-mobile"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.0"
