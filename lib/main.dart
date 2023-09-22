@@ -2,6 +2,7 @@ import 'package:event_app/app/app.bottomsheets.dart';
 import 'package:event_app/app/app.dialogs.dart';
 import 'package:event_app/app/app.locator.dart';
 import 'package:event_app/app/app.router.dart';
+import 'package:event_app/ui/views/settings/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,14 +34,15 @@ class EventApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Vikings Event App',
-       themeMode: ThemeMode.light,
+      themeMode: ThemeMode.light,
       theme: EnvThemeManager.lightTheme,
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: StackedRouter().onGenerateRoute,
-      navigatorKey: StackedService.navigatorKey,
-      navigatorObservers: [
-        StackedService.routeObserver,
-      ],
+      // onGenerateRoute: StackedRouter().onGenerateRoute,
+      // navigatorKey: StackedService.navigatorKey,
+      // navigatorObservers: [
+      //   StackedService.routeObserver,
+      // ],
+      home: const SettingsView(),
     );
   }
 }

@@ -9,13 +9,14 @@ class EnvAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.leadingWidth,
       this.elevation,
       this.actions,
-      });
+      this.centerTitle});
   final String? title;
   final Widget? leading;
   final TextStyle? style;
   final double? leadingWidth;
   final double? elevation;
   final List<Widget>? actions;
+  final bool? centerTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class EnvAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: leading,
       leadingWidth: leadingWidth,
       elevation: elevation ?? 0,
-      centerTitle: true,
+      centerTitle: centerTitle,
       actions: actions,
     );
   }
