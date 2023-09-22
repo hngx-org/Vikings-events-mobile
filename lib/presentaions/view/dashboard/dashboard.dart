@@ -1,5 +1,6 @@
 import 'package:event_app/core/extensions/string_extension.dart';
 import 'package:event_app/presentaions/controllers/dashboard_controller.dart';
+import 'package:event_app/presentaions/view/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,9 +45,7 @@ class Dashboard extends ConsumerWidget {
       ),
       body: [
         //!TODO: Add the pages here
-        const SizedBox.expand(
-          child: Text('Home'),
-        ),
+        const Home(),
         const SizedBox.expand(
           child: Text('My Group'),
         ),
