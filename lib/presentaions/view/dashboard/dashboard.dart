@@ -2,6 +2,7 @@ import 'package:event_app/core/extensions/string_extension.dart';
 import 'package:event_app/presentaions/controllers/dashboard_controller.dart';
 import 'package:event_app/presentaions/shared/dubm_widgets/env_appbar.dart';
 import 'package:event_app/presentaions/view/home/home.dart';
+import 'package:event_app/presentaions/view/my_group/create_group_view.dart';
 import 'package:event_app/presentaions/view/my_group/my_group_main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -63,11 +64,13 @@ List leadingAppBarList(BuildContext context) => [
         context,
         isMainAppBar: true,
       ),
-      customAppBar(
-        context,
-        title: 'My Group',
-        icon: 'people',
-      ),
+      customAppBar(context, title: 'My Group', icon: 'people', onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CreateGroupView(),
+            ));
+      }),
       customAppBar(
         context,
         title: 'Calendar',

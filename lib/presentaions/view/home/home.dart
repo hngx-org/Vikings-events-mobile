@@ -120,9 +120,10 @@ class HappingNowCard extends StatelessWidget {
                 Text(
                   'Sunday 4 - 6 PM',
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: EnvColors.primaryColor.shade300),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: EnvColors.primaryColor.shade300,
+                      ),
                 ),
                 Row(
                   children: [

@@ -11,6 +11,7 @@ PreferredSize customAppBar(
   bool isMainAppBar = false,
   String title = '',
   String icon = 'menu',
+  VoidCallback? onPressed,
 }) {
   return PreferredSize(
     preferredSize: const Size.fromHeight(60),
@@ -64,11 +65,19 @@ PreferredSize customAppBar(
                                     color: EnvColors.primaryColor,
                                   ),
                             ),
-                      SvgPicture.asset(
-                        icon.svg,
-                        colorFilter: const ColorFilter.mode(
-                          EnvColors.primaryColor,
-                          BlendMode.srcIn,
+                      InkWell(
+                        onTap: onPressed,
+                        overlayColor: MaterialStateProperty.all(
+                          EnvColors.primaryColor.withOpacity(
+                            0.5,
+                          ),
+                        ),
+                        child: SvgPicture.asset(
+                          icon.svg,
+                          colorFilter: const ColorFilter.mode(
+                            EnvColors.primaryColor,
+                            BlendMode.srcIn,
+                          ),
                         ),
                       ),
                     ],
