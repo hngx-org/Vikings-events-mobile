@@ -1,0 +1,12 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="search">
+<rect x="0.1" y="0.1" width="39.8" height="39.8" rx="7.9" fill="white"/>
+<g id="vuesax/linear/search-normal">
+<g id="search-normal">
+<path id="Vector" d="M19.188 25.3419C22.5867 25.3419 25.3419 22.5867 25.3419 19.188C25.3419 15.7894 22.5867 13.0342 19.188 13.0342C15.7894 13.0342 13.0342 15.7894 13.0342 19.188C13.0342 22.5867 15.7894 25.3419 19.188 25.3419Z" stroke="#1E1B1C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M24.6101 25.8136C24.9725 26.9076 25.7999 27.017 26.4357 26.0597C27.0169 25.1845 26.634 24.4665 25.581 24.4665C24.8016 24.4597 24.364 25.0683 24.6101 25.8136Z" stroke="#1E1B1C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<rect x="0.1" y="0.1" width="39.8" height="39.8" rx="7.9" stroke="#FDFDFD" stroke-width="0.2"/>
+</g>
+</svg>

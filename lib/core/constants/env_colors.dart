@@ -19,11 +19,12 @@ class EnvColors {
   static Color containerTextColor = const Color(0xff8781cb);
   static Color lightBackgroundColor = const Color(0xffffffff);
   static Color applicatioBackgroundColor = const Color(0xffFEFEFF);
+  static const Color mildGrey = Color(0xfff7f7f7);
 
   static const int _primaryColorValue = 0xff28289F;
   //static const int _tertiaryColorValue = 0xFF737373;
   static const int _tertiaryColorValue = 0xFFFFA776;
-  static const int _successColorValue= 0xFF08B839;
+  static const int _successColorValue = 0xFF08B839;
   static const int _errorColorValue = 0xFFB42318;
   static const int _secondaryColorValue = 0xFFFFDB58;
   static const int _infoColorNormal = 0xFF2A73D5;
@@ -43,10 +44,10 @@ class EnvColors {
     },
   );
 
-   static const MaterialColor tertiaryColor = MaterialColor(
+  static const MaterialColor tertiaryColor = MaterialColor(
     _tertiaryColorValue,
     <int, Color>{
-       50: Color(0xFFFFF3E0),
+      50: Color(0xFFFFF3E0),
       100: Color(0xFFFFE0B2),
       200: Color(0xFFFFCC80),
       300: Color(0xFFFFB74D),
@@ -58,7 +59,6 @@ class EnvColors {
       900: Color(0xFFE65100),
     },
   );
-  
 
   // static const MaterialColor tertiaryColor = MaterialColor(
   //   _tertiaryColorValue,

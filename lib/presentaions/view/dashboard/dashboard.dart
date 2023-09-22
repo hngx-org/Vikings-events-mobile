@@ -1,7 +1,7 @@
 import 'package:event_app/core/extensions/string_extension.dart';
 import 'package:event_app/presentaions/controllers/dashboard_controller.dart';
-import 'package:event_app/presentaions/view/my_group/my_group_main_view.dart';
 import 'package:event_app/presentaions/view/home/home.dart';
+import 'package:event_app/presentaions/view/my_group/my_group_main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,9 +14,7 @@ class Dashboard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final dashboardVM = ref.watch(dashBoardControllerProvider);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Title'),
-      ),
+      appBar: leadingAppBar(context),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
         currentIndex: dashboardVM.page,
