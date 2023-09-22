@@ -19,7 +19,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class EnvThemeManager {
   EnvThemeManager._();
 
-  static String get _fontFamily => 'Outfit';
+  static String get _fontFamily => 'Poppins';
   static ThemeData lightTheme = _themeData(_lightColorScheme);
 
   static final ColorScheme _lightColorScheme = const ColorScheme.light()
