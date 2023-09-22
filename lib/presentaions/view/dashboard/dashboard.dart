@@ -1,5 +1,6 @@
 import 'package:event_app/core/extensions/string_extension.dart';
 import 'package:event_app/presentaions/controllers/dashboard_controller.dart';
+import 'package:event_app/presentaions/view/my_group/my_group_main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -48,7 +49,7 @@ class Dashboard extends ConsumerWidget {
           child: Text('Home'),
         ),
         const SizedBox.expand(
-          child: Text('My Group'),
+          child: MyGroupView(),
         ),
         const SizedBox.expand(
           child: Text('Calendar'),
