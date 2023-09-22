@@ -43,7 +43,7 @@ List<Events> event = [
       eventType: 'Family Time',
       date: 'Saturday 4 - 6 PM',
       location: 'Ibiza'),
-      Events(
+  Events(
       image: 'assets/images/hills.png',
       eventType: 'The Hills',
       date: 'Saturday 4 - 6 PM',
