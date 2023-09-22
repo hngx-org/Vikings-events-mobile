@@ -1,5 +1,6 @@
 import 'package:event_app/core/extensions/string_extension.dart';
 import 'package:event_app/presentaions/controllers/dashboard_controller.dart';
+import 'package:event_app/presentaions/view/calendar/calendart.dart';
 import 'package:event_app/presentaions/view/my_group/my_group_main_view.dart';
 import 'package:event_app/presentaions/view/home/home.dart';
 import 'package:flutter/material.dart';
@@ -50,9 +51,7 @@ class Dashboard extends ConsumerWidget {
         const SizedBox.expand(
           child: MyGroupView(),
         ),
-        const SizedBox.expand(
-          child: Text('Calendar'),
-        ),
+        const Calender(),
         const SizedBox.expand(
           child: Text('Settings'),
         )
