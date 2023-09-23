@@ -1,6 +1,5 @@
 import 'package:event_app/core/constants/env_colors.dart';
 import 'package:event_app/presentaions/view/group_events.dart/event_comment.dart';
-import 'package:event_app/presentaions/view/group_events.dart/event_comments_widgets.dart';
 import 'package:event_app/presentaions/view/group_events.dart/group_event_widgets.dart';
 import 'package:event_app/presentaions/view/my_group/group_widget.dart';
 import 'package:flutter/material.dart';
