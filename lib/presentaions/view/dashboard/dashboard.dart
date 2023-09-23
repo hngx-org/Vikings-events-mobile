@@ -1,5 +1,7 @@
 import 'package:event_app/core/extensions/string_extension.dart';
 import 'package:event_app/presentaions/controllers/dashboard_controller.dart';
+import 'package:event_app/presentaions/view/calendar/calendart.dart';
+import 'package:event_app/presentaions/view/my_group/my_group_main_view.dart';
 import 'package:event_app/presentaions/shared/dubm_widgets/env_appbar.dart';
 import 'package:event_app/presentaions/view/home/home.dart';
 import 'package:event_app/presentaions/view/my_group/create_group_view.dart';
@@ -49,9 +51,7 @@ class Dashboard extends ConsumerWidget {
         //!TODO: Add the pages here
         const Home(),
         const MyGroupView(),
-        const SizedBox.expand(
-          child: Text('Calendar'),
-        ),
+         const Calender(),
         const SettingsView(),
       ][dashboardVM.page],
     );
