@@ -1,45 +1,13 @@
 import 'package:event_app/core/constants/env_colors.dart';
-import 'package:event_app/presentaions/view/myGroupdetails/my_group_card.dart';
+import 'package:event_app/presentaions/view/myGroupdetails/group_card_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-class MyGroupDetailsScreen extends StatefulWidget {
-  const MyGroupDetailsScreen({Key? key}) : super(key: key);
-
+class MyGroupDetailsScreen extends ConsumerWidget {
+  MyGroupDetailsScreen({Key? key}) : super(key: key);
+  final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
   @override
-  State<MyGroupDetailsScreen> createState() => _MyGroupDetailsScreenState();
-}
-
-class _MyGroupDetailsScreenState extends State<MyGroupDetailsScreen> {
-
-  final List _venue = [
-    'Yacht Party',
-    'Uju\'s Wedding',
-    'Yacht Party'
-  ];
-  final List _images = [
-    'assets/pngs/Themother.png',
-    'assets/pngs/flower.png',
-    'assets/pngs/thegirl.png'
-  ];
-  final List _date = [
-    'Sept 30, 2023',
-    'Oct 10, 2023',
-    'Oct 20, 2023'
-  ];
-  final List _dayAndTime = [
-    'Friday 10 - 2 AM',
-    'Saturday 10 - 4PM',
-    'Friday 2 - 4PM'
-  ];
-  final List _location = [
-    'Ibiza',
-    'London',
-    'Nottingham'
-  ];
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
           elevation: 1,
@@ -60,15 +28,12 @@ class _MyGroupDetailsScreenState extends State<MyGroupDetailsScreen> {
                           fontSize: 20.0,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins-SemiBold',
-                          color: Color(0xff28289F)
-                      ),
+                          color: Color(0xff28289F)),
                     ),
                     Text(
                       '4 members',
                       style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 12.0
-                      ),
+                          fontWeight: FontWeight.w600, fontSize: 12.0),
                     ),
                   ],
                 ),
@@ -80,22 +45,15 @@ class _MyGroupDetailsScreenState extends State<MyGroupDetailsScreen> {
                 )
               ],
             ),
-          )
-      ),
+          )),
       body: Column(
         children: [
           Expanded(
             child: ListView.builder(
-                itemCount: _venue.length,
+                key: listKey,
+                itemCount: groupCardList.length,
                 itemBuilder: (context, index) {
-                  return MyGroupCard(
-                    image: _images[index],
-                    venue: _venue[index],
-                    date: _date[index],
-                    dayAndTime: _dayAndTime[index],
-                    location: _location[index],
-                    // text: ,
-                  );
+                  return groupCardList[index];
                 }),
           ),
           const SizedBox(height: 30)
@@ -104,6 +62,3 @@ class _MyGroupDetailsScreenState extends State<MyGroupDetailsScreen> {
     );
   }
 }
-
-
-

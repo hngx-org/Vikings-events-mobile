@@ -74,12 +74,12 @@ class CreateGroupView extends ConsumerWidget {
               ),
             ],
           ),
-          InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Padding(
-              padding: EdgeInsets.only(top: 30.h),
+          Padding(
+            padding: EdgeInsets.only(top: 30.h),
+            child: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
               child: Container(
                 width: 400.w,
                 height: 50.h,

@@ -30,7 +30,7 @@ class GroupView extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const MyGroupDetailsScreen(),
+            builder: (context) => MyGroupDetailsScreen(),
           ),
         );
       },
@@ -163,6 +163,8 @@ class CreateTitle extends StatefulWidget {
   @override
   State<CreateTitle> createState() => _CreateTitleState();
 }
+
+final TextEditingController createComment = TextEditingController();
 
 class _CreateTitleState extends State<CreateTitle> {
   final TextEditingController myGoons = TextEditingController();
