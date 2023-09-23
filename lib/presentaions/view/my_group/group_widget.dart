@@ -2,6 +2,7 @@ import 'package:event_app/core/constants/env_colors.dart';
 import 'package:event_app/core/constants/env_dimensions.dart';
 import 'package:event_app/core/extensions/padding_extension.dart';
 import 'package:event_app/presentaions/controllers/my_group_controller.dart';
+import 'package:event_app/presentaions/view/myGroupdetails/my_group_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,93 +25,103 @@ class GroupView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8.r),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(
-            color: Colors.grey.shade300,
-            strokeAlign: BorderSide.strokeAlignCenter,
-            width: 1.sp,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const MyGroupDetailsScreen(),
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 5,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Image.asset(
-                    imageStr,
-                    fit: BoxFit.cover,
-                  ),
-                  //implement logic for image from api
-                  hasEvent
-                      ? Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Badge(
-                            backgroundColor: Colors.transparent,
-                            largeSize: EnvDimension.big.h,
-                            label: Container(
-                              height: 20.sp,
-                              width: 60.sp,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(2.sp),
-                                color: EnvColors.secondaryColor.shade300,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  '$eventsNo Events',
-                                  style: TextStyle(
-                                    fontSize: 9.sp,
-                                    wordSpacing: 0.5.sp,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'Poppins',
-                                    color: Colors.black,
+        );
+      },
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8.r),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.r),
+            border: Border.all(
+              color: Colors.grey.shade300,
+              strokeAlign: BorderSide.strokeAlignCenter,
+              width: 1.sp,
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 5,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.asset(
+                      imageStr,
+                      fit: BoxFit.cover,
+                    ),
+                    //implement logic for image from api
+                    hasEvent
+                        ? Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Badge(
+                              backgroundColor: Colors.transparent,
+                              largeSize: EnvDimension.big.h,
+                              label: Container(
+                                height: 20.sp,
+                                width: 60.sp,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2.sp),
+                                  color: EnvColors.secondaryColor.shade300,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    '$eventsNo Events',
+                                    style: TextStyle(
+                                      fontSize: 9.sp,
+                                      wordSpacing: 0.5.sp,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Poppins',
+                                      color: Colors.black,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        )
-                      : const SizedBox(),
-                ],
+                          )
+                        : const SizedBox(),
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    mainText,
-                    style: TextStyle(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w800,
-                      fontFamily: 'Poppins',
-                      color: Colors.black,
+              Expanded(
+                flex: 2,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      mainText,
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w800,
+                        fontFamily: 'Poppins',
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                  Text(
-                    '$membersNo Members',
-                    style: TextStyle(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Poppins',
-                      color: EnvColors.primaryColor.shade300,
+                    Text(
+                      '$membersNo Members',
+                      style: TextStyle(
+                        fontSize: 13.sp,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Poppins',
+                        color: EnvColors.primaryColor.shade300,
+                      ),
                     ),
-                  ),
-                ],
-              ).paddingSymmetric(
-                horizontal: 5.w,
-              ),
-            )
-          ],
+                  ],
+                ).paddingSymmetric(
+                  horizontal: 5.w,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
