@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'core/theme/env_theme_manager.dart';
 
 Future<void> main() async {
@@ -27,19 +28,20 @@ class EventApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: ScreenUtil.defaultSize,
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, __) {
-          return MaterialApp(
-            title: 'Vikings Event App',
-            themeMode: ThemeMode.light,
-            theme: EnvThemeManager.lightTheme,
-            debugShowCheckedModeBanner: false,
-            home: const Scaffold(
-              body: LogIn(),
-            ),
-          );
-        });
+      designSize: ScreenUtil.defaultSize,
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, __) {
+        return MaterialApp(
+          title: 'Vikings Event App',
+          themeMode: ThemeMode.light,
+          theme: EnvThemeManager.lightTheme,
+          debugShowCheckedModeBanner: false,
+          home: const Scaffold(
+            body: LogIn(),
+          ),
+        );
+      },
+    );
   }
 }
