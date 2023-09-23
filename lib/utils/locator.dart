@@ -1,4 +1,4 @@
-import 'package:event_app/data/services/local/local.dart';
+import 'package:event_app/data/local/local.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
