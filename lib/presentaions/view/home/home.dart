@@ -2,6 +2,7 @@ import 'package:event_app/core/constants/env_dimensions.dart';
 import 'package:event_app/core/extensions/num_extension.dart';
 import 'package:event_app/core/extensions/padding_extension.dart';
 import 'package:event_app/core/extensions/string_extension.dart';
+import 'package:event_app/presentaions/view/createEvent/create_event.dart';
 import 'package:event_app/presentaions/view/home/widgets/home_gridview.dart';
 import 'package:event_app/presentaions/view/home/widgets/home_tab.dart';
 import 'package:flutter/material.dart';
@@ -61,10 +62,8 @@ class Home extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const Scaffold(
-                    body: Center(
-                  child: Text('Create Group'),
-                )),
+                builder: (context) => CreateEventScreen(),
+                
               ));
         },
         child: const Icon(
