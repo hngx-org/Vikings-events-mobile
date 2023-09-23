@@ -1,4 +1,6 @@
 import 'package:event_app/core/extensions/num_extension.dart';
+import 'package:event_app/core/extensions/padding_extension.dart';
+import 'package:event_app/core/extensions/string_extension.dart';
 import 'package:event_app/presentaions/view/createEvent/widgets/custom_event_date.dart';
 import 'package:event_app/presentaions/view/createEvent/widgets/custom_event_time.dart';
 import 'package:event_app/presentaions/view/createEvent/widgets/custom_sub_hearder.dart';
@@ -6,16 +8,34 @@ import 'package:event_app/presentaions/view/createEvent/widgets/custom_textfield
 import 'package:flutter/material.dart';
 
 import 'package:event_app/core/constants/env_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class CreateEventScreen extends StatelessWidget {
-  CreateEventScreen({super.key});
+class CreateEventScreen extends StatefulWidget {
+  const CreateEventScreen({super.key});
 
+  @override
+  State<CreateEventScreen> createState() => _CreateEventScreenState();
+}
+
+class _CreateEventScreenState extends State<CreateEventScreen> {
   final TextEditingController eventTitleController = TextEditingController();
+
   final TextEditingController eventDescriptionController =
       TextEditingController();
+
   final TextEditingController eventLocationController = TextEditingController();
+
   final TextEditingController eventSelectGroupController =
       TextEditingController();
+
+  @override
+  void dispose() {
+    eventTitleController.dispose();
+    eventDescriptionController.dispose();
+    eventSelectGroupController.dispose();
+    eventLocationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +43,13 @@ class CreateEventScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          leading: const Icon(
-            Icons.arrow_back_ios_new,
-            color: EnvColors.primaryColor,
-            size: 20,
+          leading: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: const Icon(
+              Icons.arrow_back_ios_new,
+              color: EnvColors.primaryColor,
+              size: 20,
+            ),
           ),
           title: const Text(
             'Create Event',
@@ -99,7 +122,9 @@ class CreateEventScreen extends StatelessWidget {
               CustomTextField(
                   theHeight: textFieldHeight,
                   theHintText: 'Burger King, City Center',
-                  theprefix: const Icon(Icons.location_on_rounded),
+                  theprefix: SvgPicture.asset(
+                    'locationCross'.svg,
+                  ).paddingAll(10),
                   evController: eventLocationController,
                   theInputType: TextInputType.text),
               15.hi,
@@ -108,7 +133,9 @@ class CreateEventScreen extends StatelessWidget {
                 evController: eventSelectGroupController,
                 theInputType: TextInputType.text,
                 thesufix: const Icon(Icons.keyboard_arrow_down_rounded),
-                theprefix: const Icon(Icons.people),
+                theprefix: SvgPicture.asset(
+                  'people'.svg,
+                ).paddingAll(10),
                 theHintText: 'Select groups',
               ),
               15.hi,
@@ -128,7 +155,7 @@ class CreateEventScreen extends StatelessWidget {
                         ),
                       ),
                       10.wi,
-                      const Icon(Icons.image),
+                      SvgPicture.asset('gallery-import'.svg),
                     ],
                   )),
               30.hi,

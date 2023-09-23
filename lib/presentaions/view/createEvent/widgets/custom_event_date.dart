@@ -1,6 +1,8 @@
 import 'package:event_app/core/extensions/num_extension.dart';
+import 'package:event_app/core/extensions/string_extension.dart';
 import 'package:event_app/presentaions/view/createEvent/widgets/custom_sub_hearder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomEventDate extends StatelessWidget {
   const CustomEventDate({
@@ -39,9 +41,10 @@ class CustomEventDate extends StatelessWidget {
                   fontSize: 15,
                 ),
               ),
-              const Icon(
-                Icons.calendar_month_rounded,
-                size: 18,
+              SvgPicture.asset(
+                'calendar'.svg,
+                height: 18,
+                
               )
             ],
           ),
