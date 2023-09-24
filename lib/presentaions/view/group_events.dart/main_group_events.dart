@@ -1,7 +1,7 @@
 import 'package:event_app/core/constants/env_colors.dart';
 import 'package:event_app/presentaions/view/group_events.dart/event_comment.dart';
 import 'package:event_app/presentaions/view/group_events.dart/group_event_widgets.dart';
-import 'package:event_app/presentaions/view/my_group/group_widget.dart';
+import 'package:event_app/presentaions/view/my_group/widgets/group_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -85,7 +85,7 @@ class GroupEvents extends StatelessWidget {
                   controller: createComment,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    suffixIcon: Icon(
+                    suffixIcon: const Icon(
                       Icons.send_rounded,
                     ),
                     filled: true,

@@ -1,7 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:event_app/core/constants/env_colors.dart';
 import 'package:event_app/core/constants/env_dimensions.dart';
 import 'package:event_app/core/extensions/padding_extension.dart';
-import 'package:event_app/presentaions/controllers/my_group_controller.dart';
+import 'package:event_app/presentaions/shared/dubm_widgets/custom_button.dart';
 import 'package:event_app/presentaions/view/myGroupdetails/my_group_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -53,10 +54,21 @@ class GroupView extends StatelessWidget {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Image.asset(
-                      imageStr,
+                    CachedNetworkImage(
+                      imageUrl: imageStr,
                       fit: BoxFit.cover,
+                      placeholder: (context, url) => const Center(
+                        child: AppProgressIndicator(),
+                      ),
+                      errorWidget: (context, url, error) => Center(
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              'https://www.culvercitychamber.com/wp-content/uploads/group-image-placeholder.jpg',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
+
                     //implement logic for image from api
                     hasEvent
                         ? Positioned(
@@ -128,34 +140,6 @@ class GroupView extends StatelessWidget {
   }
 }
 
-final groupViewList = <Widget>[
-  const GroupView(
-    mainText: 'Sisturrz',
-    membersNo: 3,
-    eventsNo: 3,
-    imageStr: 'assets/images/sistur.jpg',
-    hasEvent: true,
-  ),
-  const GroupView(
-    mainText: 'GV Table Tennis',
-    membersNo: 15,
-    imageStr: 'assets/images/table.jpg',
-    hasEvent: false,
-  ),
-  const GroupView(
-    mainText: 'Grit Techies',
-    membersNo: 12,
-    imageStr: 'assets/images/tech.jpeg',
-    hasEvent: false,
-  ),
-  const GroupView(
-    mainText: 'Hike Squad',
-    membersNo: 8,
-    imageStr: 'assets/images/hike.jpg',
-    hasEvent: false,
-  ),
-];
-
 class CreateTitle extends StatefulWidget {
   final WidgetRef ref;
   const CreateTitle({super.key, required this.ref});
@@ -173,9 +157,9 @@ class _CreateTitleState extends State<CreateTitle> {
     return TextFormField(
       onChanged: (groupText) {
         String goonName = groupText;
-        widget.ref
-            .read<MyGroupController>(myGroupControllerProvider)
-            .holdGroupName(goonName);
+        // widget.ref
+        //     .read<MyGroupController>(myGroupControllerProvider)
+        //     .holdGroupName(goonName);
       },
       controller: myGoons,
       keyboardType: TextInputType.text,

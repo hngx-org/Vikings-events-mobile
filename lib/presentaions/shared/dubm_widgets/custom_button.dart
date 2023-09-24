@@ -79,17 +79,19 @@ class CustomButton extends StatelessWidget {
 
 class AppProgressIndicator extends StatelessWidget {
   final Color? color;
+  final double size;
   const AppProgressIndicator({
     Key? key,
     this.color,
+    this.size = 20,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Platform.isAndroid
         ? SizedBox(
-            height: 20,
-            width: 20,
+            height: size,
+            width: size,
             child: CircularProgressIndicator(
               strokeWidth: 2,
               valueColor: AlwaysStoppedAnimation(
@@ -98,7 +100,8 @@ class AppProgressIndicator extends StatelessWidget {
             ),
           )
         : CupertinoActivityIndicator(
-            color: color ?? Colors.white,
+            color: color,
+            radius: size / 2,
           );
   }
 }
