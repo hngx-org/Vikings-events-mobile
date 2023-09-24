@@ -1,6 +1,6 @@
 import 'package:event_app/core/constants/constants.dart';
 import 'package:event_app/presentaions/controllers/auth_controller.dart';
-import 'package:event_app/presentaions/model/google_signin.dart';
+// import 'package:event_app/presentaions/model/google_signin.dart';
 import 'package:event_app/presentaions/shared/dubm_widgets/custom_button.dart';
 import 'package:event_app/presentaions/view/authentication/sign_up.dart';
 import 'package:event_app/presentaions/view/dashboard/dashboard.dart';
@@ -10,11 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class LogIn extends StatelessWidget {
   const LogIn({Key? key}) : super(key: key);
 
-  Future<void> signIn() async {
-    final email = await GoogleSignInApi.login();
-    if (email != null) {
-    } else {}
-  }
+  Future<void> signIn() async {}
 
   @override
   Widget build(BuildContext context) {
