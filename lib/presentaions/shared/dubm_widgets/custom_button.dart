@@ -87,10 +87,14 @@ class AppProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Platform.isAndroid
-        ? CircularProgressIndicator(
-            strokeWidth: 2,
-            valueColor: AlwaysStoppedAnimation(
-              color ?? Colors.white,
+        ? SizedBox(
+            height: 20,
+            width: 20,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              valueColor: AlwaysStoppedAnimation(
+                color ?? Colors.white,
+              ),
             ),
           )
         : CupertinoActivityIndicator(

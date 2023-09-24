@@ -1,23 +1,23 @@
 import 'package:event_app/core/extensions/string_extension.dart';
 import 'package:event_app/presentaions/controllers/dashboard_controller.dart';
-import 'package:event_app/presentaions/view/calendar/calendart.dart';
-import 'package:event_app/presentaions/view/my_group/my_group_main_view.dart';
 import 'package:event_app/presentaions/shared/dubm_widgets/env_appbar.dart';
+import 'package:event_app/presentaions/view/calendar/calendart.dart';
 import 'package:event_app/presentaions/view/home/home.dart';
 import 'package:event_app/presentaions/view/my_group/create_group_view.dart';
-import 'package:event_app/presentaions/view/settings/settings.dart';
 import 'package:event_app/presentaions/view/my_group/my_group_main_view.dart';
+import 'package:event_app/presentaions/view/settings/settings.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class Dashboard extends ConsumerWidget {
+class Dashboard extends HookConsumerWidget {
   const Dashboard({Key? key}) : super(key: key);
 
   @override
   // Widget build(BuildContext context, WidgetRef ref) {
   Widget build(BuildContext context, WidgetRef ref) {
     final dashboardVM = ref.watch(dashBoardControllerProvider);
+
     return Scaffold(
       appBar: leadingAppBarList(context)[dashboardVM.page],
       bottomNavigationBar: BottomNavigationBar(
@@ -51,7 +51,7 @@ class Dashboard extends ConsumerWidget {
         //!TODO: Add the pages here
         const Home(),
         const MyGroupView(),
-         const Calender(),
+        const Calender(),
         const SettingsView(),
       ][dashboardVM.page],
     );

@@ -1,5 +1,5 @@
 import 'package:event_app/presentaions/controllers/base_controller.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final dashBoardControllerProvider = ChangeNotifierProvider<DashBoardController>(
   (ref) => DashBoardController(),
@@ -7,6 +7,11 @@ final dashBoardControllerProvider = ChangeNotifierProvider<DashBoardController>(
 
 class DashBoardController extends BaseChangeNotifier {
   int page = 0;
+
+  void resetPage() {
+    page = 0;
+    notifyListeners();
+  }
 
   void switchPage(int index) {
     page = index;
