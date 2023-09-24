@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -9,9 +10,9 @@ import 'package:event_app/data/local/secure_storage_service.dart';
 import 'package:event_app/utils/locator.dart';
 
 mixin DioMixin {
-  Dio createDio() {
+  Dio connect() {
     BaseOptions options = BaseOptions(
-      baseUrl: '',
+      baseUrl: 'http://13.51.241.113:5000/api/v1',
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       responseType: ResponseType.plain,
@@ -30,6 +31,7 @@ mixin DioMixin {
           return handler.next(options);
         },
         onError: (DioError e, handler) {
+          log('e: $e');
           return handler.next(e);
         },
       ),
