@@ -33,7 +33,7 @@ class Home extends StatelessWidget {
             ),
             20.hi,
             Text(
-              'Happeing Now',
+              'Happening Now',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 14,
                     color: Colors.black,
@@ -63,7 +63,6 @@ class Home extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => CreateEventScreen(),
-                
               ));
         },
         child: const Icon(

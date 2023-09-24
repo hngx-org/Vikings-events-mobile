@@ -2,6 +2,7 @@ import 'package:event_app/core/constants/env_colors.dart';
 import 'package:event_app/core/extensions/num_extension.dart';
 import 'package:event_app/core/extensions/padding_extension.dart';
 import 'package:event_app/core/extensions/string_extension.dart';
+import 'package:event_app/presentaions/controllers/dashboard_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -24,19 +25,32 @@ PreferredSize customAppBar(
                 children: [
                   Row(
                     children: [
-                      const CircleAvatar(
-                        radius: 20,
-                        backgroundImage: AssetImage(
-                          'assets/images/profile1.png',
-                        ),
+                      FutureBuilder<String>(
+                        future: DashBoardController().getImage(),
+                        builder: (context, snapshot) {
+                          final image = snapshot.data ?? '';
+                          return CircleAvatar(
+                            radius: 20,
+                            backgroundImage: NetworkImage(
+                              image,
+                            ),
+                          );
+                        },
                       ),
                       10.wi,
-                      Text(
-                        'Hello, Tam!',
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: EnvColors.primaryColor,
-                            ),
+                      FutureBuilder<String>(
+                        future: DashBoardController().getName(),
+                        builder: (context, snapshot) {
+                          final name = snapshot.data ?? '';
+                          return Text(
+                            'Hello, $name!',
+                            style:
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: EnvColors.primaryColor,
+                                    ),
+                          );
+                        },
                       ),
                     ],
                   ),

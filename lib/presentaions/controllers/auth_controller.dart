@@ -7,8 +7,10 @@ import 'package:event_app/data/services/auth_service.dart';
 import 'package:event_app/data/services/error_service.dart';
 import 'package:event_app/presentaions/controllers/base_controller.dart';
 import 'package:event_app/presentaions/model/auth_model.dart';
+import 'package:event_app/presentaions/model/google_signin.dart';
 import 'package:event_app/utils/locator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 final authControllerProvider = ChangeNotifierProvider<AuthController>((ref) {
   return AuthController();
@@ -16,27 +18,41 @@ final authControllerProvider = ChangeNotifierProvider<AuthController>((ref) {
 
 class AuthController extends BaseChangeNotifier {
   final authService = AuthService();
+  final SecureStorageService secureStorageService =
+      SecureStorageService(secureStorage: const FlutterSecureStorage());
 
   Future<bool> authenticate() async {
     loadingState = LoadingState.loading;
 
     try {
-      final res = await authService.auth(
-        googleId: 'uweoud8budwe8do0',
-        email: 'talk2engineerdavid@gmail.com ',
-        picture:
-            'https://res.cloudinary.com/ol4juwon/image/upload/v1695493954/test/xjcovb2hbay64h3ayt4r.jpg',
-        name: 'Manu not nited',
-      );
-      if (res.statusCode == 200) {
-        final data = authModelFromJson(res.data);
-        await locator<SecureStorageService>().write(
-          key: EnvStrings.token,
-          value: data.accessToken ?? '',
+      final userData = await signIn();
+
+      if (userData?['id'] != null) {
+        final res = await authService.auth(
+          googleId: 'uweoud8budwe8do0',
+          email: userData?['email'],
+          picture: userData?['picture'],
+          name: userData?['name'],
         );
-        loadingState = LoadingState.idle;
-        //TODO: Marcus, save user's details to local storage
-        return true;
+        if (res.statusCode == 200) {
+          final data = authModelFromJson(res.data);
+          await locator<SecureStorageService>().write(
+            key: EnvStrings.token,
+            value: data.accessToken ?? '',
+          );
+          loadingState = LoadingState.idle;
+
+          //TODO: Marcus, save user's details to local storage
+          await saveUserDetails(
+            secureStorageService,
+            userData['name'],
+            userData['picture'],
+            userData['email'],
+          );
+          return true;
+        }
+      } else {
+        throw Error();
       }
     } on DioError catch (e) {
       loadingState = LoadingState.error;

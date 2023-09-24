@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "155181837869",
+    "project_id": "vikings-event-mobile",
+    "storage_bucket": "vikings-event-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155181837869:android:5c071791bd74643fc1d2a4",
+        "android_client_info": {
+          "package_name": "com.example.event_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155181837869-5424bfflj6rve1htbsa4sc8k61gurvrv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.event_app",
+            "certificate_hash": "1b2f28ec8c5e7133d3cb7301b892caf2e90dad77"
+          }
+        },
+        {
+          "client_id": "155181837869-8v34jolkp35giajg886cs7ipaik75a2n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANkMX3FfHn3rglKA3mMHy4IswC5KkYcPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155181837869-8v34jolkp35giajg886cs7ipaik75a2n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "155181837869-7s5b7po5i25uqv0g13fcosa3ru7vjv9a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eventApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
