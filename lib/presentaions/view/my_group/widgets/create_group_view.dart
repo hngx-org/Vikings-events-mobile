@@ -2,11 +2,11 @@ import 'package:event_app/core/constants/env_colors.dart';
 import 'package:event_app/core/extensions/padding_extension.dart';
 import 'package:event_app/core/extensions/string_extension.dart';
 import 'package:event_app/presentaions/shared/dubm_widgets/env_appbar.dart';
-import 'package:event_app/presentaions/view/my_group/group_widget.dart';
+import 'package:event_app/presentaions/view/my_group/widgets/group_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CreateGroupView extends ConsumerWidget {
   const CreateGroupView({super.key});
