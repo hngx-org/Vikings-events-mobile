@@ -29,7 +29,7 @@ class AuthController extends BaseChangeNotifier {
 
       if (userData?['id'] != null) {
         final res = await authService.auth(
-          googleId: 'uweoud8budwe8do0',
+          googleId: userData?['id'],
           email: userData?['email'],
           picture: userData?['picture'],
           name: userData?['name'],

@@ -5,7 +5,6 @@ import 'package:event_app/presentaions/controllers/dashboard_controller.dart';
 import 'package:event_app/presentaions/model/model.dart';
 import 'package:event_app/presentaions/shared/dubm_widgets/env_icon_button.dart';
 import 'package:event_app/presentaions/view/authentication/log_in.dart';
-import 'package:event_app/presentaions/view/settings/settings_viewmodel.dart';
 import 'package:event_app/utils/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +18,6 @@ class SettingsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settingsData = ref.watch(settingsViewModelProvider);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
