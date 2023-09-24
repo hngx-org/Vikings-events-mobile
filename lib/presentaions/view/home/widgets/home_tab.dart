@@ -8,7 +8,7 @@ class EventTab extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tab = useState(0);
+    final tab = useState(2);
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 12,

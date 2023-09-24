@@ -1,4 +1,5 @@
-import 'package:event_app/data/services/local/local.dart';
+import 'package:event_app/data/local/local.dart';
+import 'package:event_app/data/services/error_service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,5 +22,13 @@ Future<void> setUpLocator() async {
     () => ImagePickerService(
       picker: locator(),
     ),
+  );
+
+  locator.registerLazySingleton<ErrorService>(
+    () => ErrorService(),
+  );
+
+  locator.registerLazySingleton<ToastService>(
+    () => ToastService(),
   );
 }

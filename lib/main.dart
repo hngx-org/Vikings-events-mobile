@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:oktoast/oktoast.dart';
+
 import 'core/theme/env_theme_manager.dart';
 
 Future<void> main() async {
@@ -26,7 +28,8 @@ class EventApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
+    return OKToast(
+      child: ScreenUtilInit(
         designSize: ScreenUtil.defaultSize,
         minTextAdapt: true,
         splitScreenMode: true,
@@ -40,6 +43,8 @@ class EventApp extends StatelessWidget {
               body: LogIn(),
             ),
           );
-        });
+        },
+      ),
+    );
   }
 }
