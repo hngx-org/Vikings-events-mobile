@@ -28,7 +28,7 @@ class GroupController extends BaseChangeNotifier {
 
     try {
       final res = await _groupService.fetchUserGroup(
-        id: 'erhiogererieker',
+        id: id,
       );
 
       if (res.statusCode == 200) {
