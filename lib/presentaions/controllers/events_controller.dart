@@ -1,48 +1,55 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:event_app/data/services/error_service.dart';
-import 'package:event_app/data/services/group_service.dart';
+import 'package:event_app/data/services/events_service.dart';
 import 'package:event_app/presentaions/controllers/base_controller.dart';
 import 'package:event_app/presentaions/controllers/dashboard_controller.dart';
 import 'package:event_app/presentaions/model/group_model.dart';
+import 'package:event_app/presentaions/model/home_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../core/constants/constants.dart';
 
-final groupControllerProvider = ChangeNotifierProvider<GroupController>(
+final eventsControllerProvider = ChangeNotifierProvider<EventsController>(
   (ref) {
-    return GroupController();
+    return EventsController();
   },
 );
 
-class GroupController extends BaseChangeNotifier {
-  final _groupService = GroupService();
-  List<Group> groups = [];
+class EventsController extends BaseChangeNotifier {
+  final _eventService = EventService();
+  List<Events> groups = [];
 
-  getMyGroup() async {
+  getEvents() async {
     loadingState = LoadingState.loading;
-    final id = await DashBoardController().getId();
+    // final id = await DashBoardController().getId();
 
     try {
-      final res = await _groupService.fetchUserGroup(
-        id: id,
-      );
+      final res = await _eventService.fetchEvents();
 
       if (res.statusCode == 200) {
-        final data = groupModelFromJson(res.data);
-        groups = data.data ?? [];
-        log('groups: $groups');
+        Map<String, dynamic> data = jsonDecode(res.data);
+
+// Access the "events" property
+        Map<String, dynamic> events = data['events'];
+
+// Now you can access the "upcomingEvents" property
+        List<dynamic> upcomingEvents = events['upcomingEvents'];
+
         notifyListeners();
         loadingState = LoadingState.idle;
-        return true;
+        return upcomingEvents;
       }
     } on DioError catch (e) {
+      // print(e);
       loadingState = LoadingState.error;
       ErrorService.handleErrors(e);
     } catch (e) {
+      // print("error");
       loadingState = LoadingState.error;
       ErrorService.handleErrors(e);
     }

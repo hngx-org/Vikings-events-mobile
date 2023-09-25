@@ -48,6 +48,7 @@ class AuthController extends BaseChangeNotifier {
             userData['name'],
             userData['picture'],
             userData['email'],
+            userData['id'],
           );
           return true;
         }

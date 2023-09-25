@@ -32,8 +32,10 @@ Future<void> saveUserDetails(
   String name,
   String picture,
   String email,
+  String id,
 ) async {
   await secureStorage.write(key: "name", value: name);
   await secureStorage.write(key: "picture", value: picture);
   await secureStorage.write(key: "email", value: email);
+  await secureStorage.write(key: "id", value: id);
 }
