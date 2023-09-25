@@ -1,25 +1,41 @@
+import 'package:event_app/data/local/local.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class GoogleSignInApi {
-  static final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
+UserCredential? currentUserCredential;
 
-  static Future<String?> login() async {
-    try {
-      final GoogleSignInAccount? googleSignInAccount =
-          await _googleSignIn.signIn();
+Future signIn() async {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
-      if (googleSignInAccount != null) {
-        final GoogleSignInAuthentication googleSignInAuthentication =
-            await googleSignInAccount.authentication;
+  final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
-        final String email = googleSignInAccount.email;
+  final GoogleSignInAuthentication googleAuth =
+      await googleUser!.authentication;
 
-        return email;
-      }
-    } catch (error) {
-      print("Google Sign-In Error: $error");
-    }
+  final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
-    return null;
-  }
+  // Sign in the user with credentials
+  currentUserCredential = await auth.signInWithCredential(credential);
+
+  return (currentUserCredential?.additionalUserInfo?.profile);
+}
+
+Future<void> logout() async {
+  final GoogleSignIn googleSign = GoogleSignIn();
+  await googleSign.signOut();
+}
+
+Future<void> saveUserDetails(
+  SecureStorageService secureStorage,
+  String name,
+  String picture,
+  String email,
+  String id,
+) async {
+  await secureStorage.write(key: "name", value: name);
+  await secureStorage.write(key: "picture", value: picture);
+  await secureStorage.write(key: "email", value: email);
+  await secureStorage.write(key: "id", value: id);
 }

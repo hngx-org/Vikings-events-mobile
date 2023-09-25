@@ -12,9 +12,9 @@ class SettingsViewModel extends StateNotifier<SettingsData> {
     state = state.copyWith(email: newEmail);
   }
 
-  Future<void> logout() async {
-    // logout logic here
-  }
+  // Future<void> logout() async {
+  //   // logout logic here
+  // }
 }
 
 class SettingsData {

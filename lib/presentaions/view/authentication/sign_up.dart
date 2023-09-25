@@ -1,16 +1,16 @@
+import 'package:event_app/core/constants/constants.dart';
+import 'package:event_app/presentaions/controllers/auth_controller.dart';
 import 'package:event_app/presentaions/model/google_signin.dart';
+import 'package:event_app/presentaions/shared/dubm_widgets/custom_button.dart';
 import 'package:event_app/presentaions/view/authentication/log_in.dart';
 import 'package:event_app/presentaions/view/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
 
-  Future<void> signIn() async {
-    final email = await GoogleSignInApi.login();
-    if (email != null) {
-    } else {}
-  }
+  Future<void> signIn() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -67,40 +67,29 @@ class SignUp extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 60),
-              SizedBox(
-                width: double.infinity,
-                height: 48,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // signIn();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) {
-                        return const Dashboard();
-                      }),
-                    );
-                  },
-                  style: ButtonStyle(
-                    elevation: const MaterialStatePropertyAll(0.5),
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      const Color.fromRGBO(40, 40, 159, 1),
-                    ), // Change the color here
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            10.0), // Change the border radius here
-                      ),
-                    ),
-                  ),
-                  child: const Text(
-                    "Continue with Google",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
+              Consumer(
+                builder: (context, ref, child) {
+                  return CustomButton(
+                    buttonText: "Continue with Google",
+                    onPressed: () {
+                      ref
+                          .read(authControllerProvider.notifier)
+                          .authenticate()
+                          .then((value) {
+                        if (value) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const Dashboard(),
+                            ),
+                          );
+                        }
+                      });
+                    },
+                    isLoading: ref.watch(authControllerProvider).loadingState ==
+                        LoadingState.loading,
+                  );
+                },
               ),
               const SizedBox(height: 70),
               Row(

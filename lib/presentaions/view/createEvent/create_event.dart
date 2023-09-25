@@ -165,6 +165,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                     child: Container(
                       height: 45,
                       padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.only(bottom: 20),
                       decoration: BoxDecoration(
                         color: EnvColors.primaryColor,
                         borderRadius: BorderRadius.circular(10),
