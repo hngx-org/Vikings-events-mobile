@@ -30,6 +30,11 @@ class DashBoardController extends BaseChangeNotifier {
     return email as String;
   }
 
+  Future<String> getId() async {
+    String? id = await secureStorageService.read(key: "id");
+    return id as String;
+  }
+
   void resetPage() {
     page = 0;
     notifyListeners();

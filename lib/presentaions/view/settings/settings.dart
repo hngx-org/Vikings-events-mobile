@@ -26,13 +26,20 @@ class SettingsView extends ConsumerWidget {
               leading: FutureBuilder<String>(
                 future: DashBoardController().getImage(),
                 builder: (context, snapshot) {
-                  final image = snapshot.data ?? '';
-                  return CircleAvatar(
-                    radius: 20,
-                    backgroundImage: NetworkImage(
-                      image,
-                    ),
-                  );
+                  final image = snapshot.data;
+                  if (image == null || image.isEmpty) {
+                    return const CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.white,
+                      backgroundImage:
+                          AssetImage('assets/images/profile_pic.png'),
+                    );
+                  } else {
+                    return CircleAvatar(
+                      radius: 20,
+                      backgroundImage: NetworkImage(image),
+                    );
+                  }
                 },
               ),
               title: FutureBuilder<String>(

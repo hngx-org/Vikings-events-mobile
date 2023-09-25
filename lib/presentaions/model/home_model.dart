@@ -1,3 +1,5 @@
+import 'package:event_app/presentaions/controllers/events_controller.dart';
+
 class Events {
   final String image;
   final String eventType;
@@ -10,6 +12,10 @@ class Events {
     required this.date,
     required this.location,
   });
+}
+
+Future fetchEvents() async {
+  return EventsController().getEvents();
 }
 
 List<Events> event = [
