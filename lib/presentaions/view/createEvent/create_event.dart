@@ -112,7 +112,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
               const CustomSubHeader(theText: 'Event Description'),
               10.hi,
               CustomTextField(
-                theMaxLines: 5,
+                theMaxLines: 4,
                 evController: eventDescriptionController,
                 theInputType: TextInputType.multiline,
               ),
